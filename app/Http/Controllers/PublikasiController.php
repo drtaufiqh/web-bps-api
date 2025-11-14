@@ -36,4 +36,23 @@ class PublikasiController extends Controller
         }
         return $publikasi;
     }
+
+    // PUT/PATCH /publikasi/{id}
+    public function update(Request $request, $id)
+    {
+        $publikasi = Publikasi::find($id);
+        if (!$publikasi) {
+            return response()->json(['message' => 'Publikasi tidak ditemukan'], 404);
+        }
+
+        $validated = $request->validate([
+            'title' => 'sometimes|required|string|max:255',
+            'releaseDate' => 'sometimes|required|date',
+            'description' => 'nullable|string',
+            'coverUrl' => 'nullable|url',
+        ]);
+
+        $publikasi->update($validated);
+        return response()->json($publikasi);
+    }
 }
