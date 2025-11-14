@@ -28,5 +28,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/publikasi', [PublikasiController::class, 'store']);
     Route::get('/publikasi/{id}', [PublikasiController::class, 'show']);
     Route::put('/publikasi/{id}', [PublikasiController::class, 'update']);
+    Route::delete('/publikasi/{id}', [PublikasiController::class, 'destroy']);
 });
 

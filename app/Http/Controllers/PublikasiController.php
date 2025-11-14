@@ -55,4 +55,16 @@ class PublikasiController extends Controller
         $publikasi->update($validated);
         return response()->json($publikasi);
     }
+
+    // DELETE /publikasi/{id}
+    public function destroy($id)
+    {
+        $publikasi = Publikasi::find($id);
+        if (!$publikasi) {
+            return response()->json(['message' => 'Publikasi tidak ditemukan'], 404);
+        }
+
+        $publikasi->delete();
+        return response()->json(["message" => "Publikasi berhasil dihapus"]);
+    }
 }
