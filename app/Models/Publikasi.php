@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Publikasi extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'releaseDate',
+        'description',
+        'coverURL',
+    ];
 }
