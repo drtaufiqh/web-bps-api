@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 
 class PublikasiController extends Controller
 {
-    //
+    // GET /publikasi
     public function index()
     {
         return Publikasi::all();
     }
 
+    // POST /publikasi
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -24,5 +25,15 @@ class PublikasiController extends Controller
 
         $publikasi = Publikasi::create($validated);
         return response()->json($publikasi, 201);
+    }
+
+    // GET /publikasi/{id}
+    public function show($id)
+    {
+        $publikasi = Publikasi::find($id);
+        if (!$publikasi) {
+            return response()->json(['message' => 'Publikasi tidak ditemukan'], 404);
+        }
+        return $publikasi;
     }
 }

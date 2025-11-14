@@ -26,5 +26,6 @@ Route::middleware('auth:sanctum')->group(function () {
     // Publikasi
     Route::get('/publikasi', [PublikasiController::class, 'index']);
     Route::post('/publikasi', [PublikasiController::class, 'store']);
+    Route::get('/publikasi/{id}', [PublikasiController::class, 'show']);
 });
 
