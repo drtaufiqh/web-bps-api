@@ -23,7 +23,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
-    // Publikasi
+    // Logout
+    Route::post('logout', [AuthController::class, 'logout']);
+
+    // Publikasi CRUD
     Route::get('/publikasi', [PublikasiController::class, 'index']);
     Route::post('/publikasi', [PublikasiController::class, 'store']);
     Route::get('/publikasi/{id}', [PublikasiController::class, 'show']);

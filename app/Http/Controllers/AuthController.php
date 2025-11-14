@@ -28,4 +28,13 @@ class AuthController extends Controller
             'token' => $token,
         ]);
     }
+
+    // logout
+    public function logout(Request $request)
+    {
+        // hapus token
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json(["message" => "Logout berhasil"]);
+    }
 }
